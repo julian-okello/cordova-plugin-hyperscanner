@@ -1,0 +1,5 @@
+dependencies {
+    implementation files('libs/xUtils-2.5.5.jar')
+    implementation files('libs/jxl.jar')
+    implementation files('libs/cw-deviceapi20180918.jar')
+}

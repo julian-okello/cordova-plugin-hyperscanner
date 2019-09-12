@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-hyperscanner" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>Hyperscanner</name>
+	<js-module name="Hyperscanner" src="www/Hyperscanner.js">
+		<clobbers target="cordova.plugins.Hyperscanner" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="Hyperscanner">
+				<param name="android-package" value="cordova.plugin.hyperscanner.Hyperscanner" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.CAMERA" />
+			<uses-feature android:name="android.hardware.camera" />
+			<uses-feature android:name="android.hardware.camera2.full" android:required="false" />
+			<uses-feature android:name="android.hardware.camera2.autofocus" android:required="false" />
+			<uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+		</config-file>
+
+		<framework src="src/android/extras.gradle" custom="true" type="gradleReference" />
+
+		<source-file src="src/android/Hyperscanner.java" target-dir="src/cordova/plugin/hyperscanner" />
+		<source-file src="src/android/BarcodeScanner.java" target-dir="src/cordova/plugin/hyperscanner" />
+		<source-file src="src/android/RFIDScanner.java" target-dir="src/cordova/plugin/hyperscanner" />
+		<source-file src="src/android/BeepHelper.java" target-dir="src/cordova/plugin/hyperscanner" />
+
+		<source-file src="src/android/libs/xUtils-2.5.5.jar" target-dir="libs" />
+		<source-file src="src/android/libs/jxl.jar" target-dir="libs" />
+		<source-file src="src/android/libs/cw-deviceapi20180918.jar" target-dir="libs" />
+
+		<resource-file src="src/android/jniLibs/arm64-v8a/libbarcodereader44.so" target="jniLibs/arm64-v8a/libbarcodereader44.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libDeviceAPI.so" target="jniLibs/arm64-v8a/libDeviceAPI.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libHHPScanInterface.so" target="jniLibs/arm64-v8a/libHHPScanInterface.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libHSMDecoderAPI.so" target="jniLibs/arm64-v8a/libHSMDecoderAPI.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libHsmKil.so" target="jniLibs/arm64-v8a/libHsmKil.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libIAL.so" target="jniLibs/arm64-v8a/libIAL.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libIGLBarDecoder.so" target="jniLibs/arm64-v8a/libIGLBarDecoder.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libIGLImageAE.so" target="jniLibs/arm64-v8a/libIGLImageAE.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libSDL.so" target="jniLibs/arm64-v8a/libSDL.so" />
+
+        <resource-file src="src/android/jniLibs/armeabi/libbarcodereader.so" target="jniLibs/armeabi/libbarcodereader.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libbarcodereader43.so" target="jniLibs/armeabi/libbarcodereader43.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libbarcodereader44.so" target="jniLibs/armeabi/libbarcodereader44.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libDeviceAPI.so" target="jniLibs/armeabi/libDeviceAPI.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libHHPScanInterface.so" target="jniLibs/armeabi/libHHPScanInterface.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libHSMDecoderAPI.so" target="jniLibs/armeabi/libHSMDecoderAPI.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libHsmKil.so" target="jniLibs/armeabi/libHsmKil.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libIAL.so" target="jniLibs/armeabi/libIAL.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libIGLBarDecoder.so" target="jniLibs/armeabi/libIGLBarDecoder.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libIGLImageAE.so" target="jniLibs/armeabi/libIGLImageAE.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libSDL.so" target="jniLibs/armeabi/libSDL.so" />
+
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libbarcodereader.so" target="jniLibs/armeabi-v7a/libbarcodereader.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libbarcodereader43.so" target="jniLibs/armeabi-v7a/libbarcodereader43.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libbarcodereader44.so" target="jniLibs/armeabi-v7a/libbarcodereader44.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libDeviceAPI.so" target="jniLibs/armeabi-v7a/libDeviceAPI.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libHHPScanInterface.so" target="jniLibs/armeabi-v7a/libHHPScanInterface.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libHSMDecoderAPI.so" target="jniLibs/armeabi-v7a/libHSMDecoderAPI.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libHsmKil.so" target="jniLibs/armeabi-v7a/libHsmKil.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libIAL.so" target="jniLibs/armeabi-v7a/libIAL.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libIGLBarDecoder.so" target="jniLibs/armeabi-v7a/libIGLBarDecoder.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libIGLImageAE.so" target="jniLibs/armeabi-v7a/libIGLImageAE.so" />
+        <resource-file src="src/android/jniLibs/armeabi-v7a/libSDL.so" target="jniLibs/armeabi-v7a/libSDL.so" />
+
+	</platform>
+</plugin>

@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-hyperscanner",
+  "version": "0.0.1",
+  "description": "Plugin for Bigbox Africa Scanner",
+  "cordova": {
+    "id": "cordova-plugin-hyperscanner",
+    "platforms": []
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulobunga/cordova-plugin-hyperscanner.git"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Paul Obunga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulobunga/cordova-plugin-hyperscanner/issues"
+  },
+  "homepage": "https://github.com/paulobunga/cordova-plugin-hyperscanner#readme"
+}
