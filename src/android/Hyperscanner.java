@@ -63,6 +63,10 @@ public class Hyperscanner extends CordovaPlugin {
         rfidScanner = new RFIDScanner(cordova.getActivity(), new RFIDScanner.OnScannerCallback() {
             @Override
             public void success(String rfidtag) {
+                PluginResult result = new PluginResult(PluginResult.Status.OK, rfidtag);
+                result.setKeepCallback(true);
+                
+                PUBLIC_CALLBACK.sendPluginResult(result);
                 logResult(rfidtag);
             }
 
