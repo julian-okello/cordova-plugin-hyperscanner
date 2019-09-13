@@ -78,7 +78,7 @@ public class Hyperscanner extends CordovaPlugin {
     }
 
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public PluginResult execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
         PUBLIC_CALLBACK = callbackContext;
 
@@ -96,10 +96,10 @@ public class Hyperscanner extends CordovaPlugin {
 
         }
 
-        PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, "Just Checking");
         result.setKeepCallback(true);
 
-        return true;
+        return result;
     }
 
     public void logResult(String body) {
