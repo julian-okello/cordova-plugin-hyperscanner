@@ -52,6 +52,7 @@ public class BarcodeScanner {
         @Override
         public void onScanComplete(int i, int length, byte[] bytes) {
             if (length < 1) {
+                destroy();
                 if (length == -1) {
                     // Scan cancel
                     scanCallback.error("Scan cancelled");
