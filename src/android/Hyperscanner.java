@@ -76,7 +76,7 @@ public class Hyperscanner extends CordovaPlugin {
 
             logResult("You can now scan barcodes");
 
-            //barcodeScanner.startScan();
+            barcodeScanner.startScan();
 
         } else if (ACTION_SCAN_RFID.equals(action)) {
 
