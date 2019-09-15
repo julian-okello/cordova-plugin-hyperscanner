@@ -26,9 +26,9 @@ public class Hyperscanner extends CordovaPlugin {
 
     private CallbackContext PUBLIC_CALLBACK = null;
 
-    private BarcodeScanner barcodeScanner;
+    cordova.plugin.hyperscanner.BarcodeScanner barcodeScanner;
 
-    private RFIDScanner rfidScanner;
+    cordova.plugin.hyperscanner.RFIDScanner rfidScanner;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -42,7 +42,7 @@ public class Hyperscanner extends CordovaPlugin {
         pref = cordova.getActivity().getSharedPreferences("BIGBOXAFRICA", Context.MODE_PRIVATE);
         editor = pref.edit();
 
-        barcodeScanner = new BarcodeScanner(cordova.getActivity(), new BarcodeScanner.OnScannerCallback() {
+        barcodeScanner = new cordova.plugin.hyperscanner.BarcodeScanner(cordova.getActivity(), new cordova.plugin.hyperscanner.BarcodeScanner.OnScannerCallback() {
             @Override
             public void success(String barcode) {
                 logResult(barcode);
@@ -54,7 +54,7 @@ public class Hyperscanner extends CordovaPlugin {
             }
         });
 
-        rfidScanner = new RFIDScanner(cordova.getActivity(), new RFIDScanner.OnScannerCallback() {
+        rfidScanner = new cordova.plugin.hyperscanner.RFIDScanner(cordova.getActivity(), new cordova.plugin.hyperscanner.RFIDScanner.OnScannerCallback() {
             @Override
             public void success(String rfidtag) {
                 logResult(rfidtag);
@@ -74,9 +74,9 @@ public class Hyperscanner extends CordovaPlugin {
 
         if (ACTION_SCAN_BARCODE.equals(action)) {
 
-            // logResult("You can now scan barcodes");
+            logResult("You can now scan barcodes");
 
-            barcodeScanner.startScan();
+            //barcodeScanner.startScan();
 
         } else if (ACTION_SCAN_RFID.equals(action)) {
 
@@ -86,13 +86,22 @@ public class Hyperscanner extends CordovaPlugin {
 
         }
 
+        PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
+        result.setKeepCallback(true);
+
         return true;
     }
 
     public void logResult(String body) {
+        
+        Toast.makeText(cordova.getActivity(), body, Toast.LENGTH_SHORT).show();
+
         PluginResult result = new PluginResult(PluginResult.Status.OK, body);
         result.setKeepCallback(true);
+
         PUBLIC_CALLBACK.sendPluginResult(result);
+        return;
+
     }
 
     @Override
