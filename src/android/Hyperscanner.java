@@ -45,12 +45,6 @@ public class Hyperscanner extends CordovaPlugin {
         barcodeScanner = new BarcodeScanner(cordova.getActivity(), new BarcodeScanner.OnScannerCallback() {
             @Override
             public void success(String barcode) {
-
-                PluginResult result = new PluginResult(PluginResult.Status.OK, barcode);
-                result.setKeepCallback(true);
-
-                PUBLIC_CALLBACK.sendPluginResult(result);
-
                 logResult(barcode);
             }
 
@@ -63,10 +57,6 @@ public class Hyperscanner extends CordovaPlugin {
         rfidScanner = new RFIDScanner(cordova.getActivity(), new RFIDScanner.OnScannerCallback() {
             @Override
             public void success(String rfidtag) {
-                PluginResult result = new PluginResult(PluginResult.Status.OK, rfidtag);
-                result.setKeepCallback(true);
-                
-                PUBLIC_CALLBACK.sendPluginResult(result);
                 logResult(rfidtag);
             }
 
@@ -100,12 +90,9 @@ public class Hyperscanner extends CordovaPlugin {
     }
 
     public void logResult(String body) {
-        
-         PluginResult result = new PluginResult(PluginResult.Status.OK, body);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, body);
         result.setKeepCallback(true);
-        
-        Toast.makeText(cordova.getActivity(), body, Toast.LENGTH_SHORT).show();
-
+        PUBLIC_CALLBACK.sendPluginResult(result);
     }
 
     @Override
