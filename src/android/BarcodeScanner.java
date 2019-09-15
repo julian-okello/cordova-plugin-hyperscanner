@@ -12,7 +12,7 @@ public class BarcodeScanner {
     private OnScannerCallback scanCallback;
     private boolean scanning = false;
 
-    private cordova.plugin.hyperscanner.BeepHelper beepHelper;
+    private BeepHelper beepHelper;
 
     public interface OnScannerCallback {
         void success(String barcode);
@@ -52,7 +52,6 @@ public class BarcodeScanner {
         @Override
         public void onScanComplete(int i, int length, byte[] bytes) {
             if (length < 1) {
-                destroy();
                 if (length == -1) {
                     // Scan cancel
                     scanCallback.error("Scan cancelled");
@@ -89,9 +88,8 @@ public class BarcodeScanner {
                     result = barcode2DWithSoft.open(activity);
                 }
             } catch(Exception e){
-
+                //e.printStackTrace();
             }
-
 
             return result;
         }
@@ -121,6 +119,4 @@ public class BarcodeScanner {
         }
 
     }
-
-
 }

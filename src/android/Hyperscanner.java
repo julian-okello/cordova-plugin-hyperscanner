@@ -26,9 +26,9 @@ public class Hyperscanner extends CordovaPlugin {
 
     private CallbackContext PUBLIC_CALLBACK = null;
 
-    cordova.plugin.hyperscanner.BarcodeScanner barcodeScanner;
+    BarcodeScanner barcodeScanner;
 
-    cordova.plugin.hyperscanner.RFIDScanner rfidScanner;
+    RFIDScanner rfidScanner;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -42,7 +42,7 @@ public class Hyperscanner extends CordovaPlugin {
         pref = cordova.getActivity().getSharedPreferences("BIGBOXAFRICA", Context.MODE_PRIVATE);
         editor = pref.edit();
 
-        barcodeScanner = new cordova.plugin.hyperscanner.BarcodeScanner(cordova.getActivity(), new cordova.plugin.hyperscanner.BarcodeScanner.OnScannerCallback() {
+        barcodeScanner = new BarcodeScanner(cordova.getActivity(), new BarcodeScanner.OnScannerCallback() {
             @Override
             public void success(String barcode) {
                 logResult(barcode);
@@ -54,7 +54,7 @@ public class Hyperscanner extends CordovaPlugin {
             }
         });
 
-        rfidScanner = new cordova.plugin.hyperscanner.RFIDScanner(cordova.getActivity(), new cordova.plugin.hyperscanner.RFIDScanner.OnScannerCallback() {
+        rfidScanner = new RFIDScanner(cordova.getActivity(), new RFIDScanner.OnScannerCallback() {
             @Override
             public void success(String rfidtag) {
                 logResult(rfidtag);
@@ -74,7 +74,7 @@ public class Hyperscanner extends CordovaPlugin {
 
         if (ACTION_SCAN_BARCODE.equals(action)) {
 
-            logResult("You can now scan barcodes");
+            //logResult("You can now scan barcodes");
 
             barcodeScanner.startScan();
 
